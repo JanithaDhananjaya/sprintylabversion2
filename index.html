@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <title>Sprinty Lab</title>
+
+    <link rel="shortcut icon" href="Images/logo.png"/>
+    <script src="JS/Libraries/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="CSS/Libraries/bootstrap.css">
+    <style type="text/css">
+
+        .form-line {
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        .form-all {
+            margin: 0px auto;
+            padding-top: 0px;
+            width: 520px;
+            color: rgb(28, 28, 28) !important;
+            font-family: 'Roboto';
+            font-size: 14px;
+        }
+    </style>
+
+    <style type="text/css" id="form-designer-style">
+        /* Injected CSS Code */
+        .form-label.form-label-auto {
+
+            display: inline-block;
+            float: left;
+            text-align: left;
+
+        }
+
+        .form-line {
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+
+        .form-all {
+            width: 520px;
+        }
+
+        .form-label-left,
+        .form-label-right {
+            width: 151px
+        }
+
+        .form-all {
+            font-size: 14px
+        }
+
+        .supernova .form-all, .form-all {
+            background-color: rgb(255, 255, 255);
+            border: 1px solid transparent;
+        }
+
+    </style>
+
+    <style>
+        /*custom stylies*/
+
+        .portrait {
+            border: 2px solid black;
+            width: 280px;
+            height: 400px;
+            margin-left: 20%;
+            padding: 0;
+        }
+
+        .landscape {
+            border: 2px solid black;
+            width: 400px;
+            height: 250px;
+            margin-left: 5%;
+        }
+
+        .image_portrait {
+            position: relative;
+            width: 280px;
+            height: 400px;
+        }
+
+        .image_landscape {
+            position: relative;
+            width: 190px;
+            height: 250px;
+        }
+
+        A4_portrait {
+            margin-left: 25%;
+        }
+
+    </style>
+
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60"
+      style="background-color: #fffee2;">
+<!-- --------------------------------------1------------------------------------------------- -->
+
+<div id="initial" class="form-all">
+    <ul class="form-section page-section">
+        <li class="form-input-wide" data-type="control_head">
+            <div class="form-header-group ">
+                <div class="header-text httal htvam">
+                    <center>
+                        <h2 id="header_18" class="form-header" data-component="header">
+                            <img src="Images/logo.png" style="max-width: 100%; max-height: 100%;">
+                        </h2>
+                        <div id="subHeader_18" class="form-subHeader">
+                            “Printing services at your fingertips”
+                        </div>
+                        <br>
+                    </center>
+                </div>
+            </div>
+        </li>
+        <div class="main">
+
+            <li class="form-line" data-type="control_fileupload" id="id_22">
+                <label class="form-label form-label-left form-label-auto" id="label_22" for="input_22"> Upload the
+                    file
+                    <span class="form-required">
+                        *
+                        </span>
+                </label>
+                <div id="cid_22" class="form-input jf-required">
+                    <input type="file" id="uploaded_file" name="uploaded_file[]" required="" class="form-upload"
+                           accept=".pdf, .ppt, .pptx, .jpg, .jpeg, .png" data-file-maxsize="25000000" id="fileChooser"
+                           onchange="preview_image(event)"
+                           data-file-minsize="0" data-file-limit="0" data-component="fileupload" multiple>
+                </div>
+            </li>
+            <li class="form-line jf-required" data-type="control_fullname" id="id_16">
+                <label class="form-label form-label-left form-label-auto" id="label_16" for="first_16">
+                    Number of copies
+                    <span class="form-required">
+                        *
+                        </span>
+                </label>
+                <div id="cid_16" class="form-input jf-required">
+                    <div data-wrapper-react="true">
+          <span class="form-sub-label-container" style="vertical-align:top;">
+            <input type="number" id="" name="no_of_copies" placeholder="Number of copies..."
+                   class="form-control-plaintext"
+                   size="10" value="1" required="">
+          </span>
+                    </div>
+                </div>
+            </li>
+
+            <li class="form-line jf-required" data-type="control_radio" id="id_19">
+                <label class="form-label form-label-left form-label-auto" id="label_19" for="input_19">
+                    Black & White /Colour
+                    <span class="form-required">
+                        *
+                        </span>
+                </label>
+                <div id="cid_19" class="form-input jf-required">
+                    <div class="form-multiple-column" data-columncount="3" data-component="radio">
+        <span class="form-radio-item">
+          <span class="dragger-item">
+          </span>
+            <input type="radio" class="form-radio" id="input_19_0" name="gray_or_color" value="gray_scale" required=""
+                   checked="">
+          <label id="label_input_19_0" for="input_19_0"> Black & White </label>
+        </span>
+                        <span class="form-radio-item">
+          <span class="dragger-item">
+          </span>
+          <input type="radio" class="form-radio" id="input_19_1" name="gray_or_color" value="color" required="">
+          <label id="label_input_19_1" for="input_19_1"> Colour </label>
+        </span>
+                    </div>
+                </div>
+            </li>
+        </div>
+
+
+        <div id="documents" class="tabcontent main">
+            <li class="form-line" data-type="control_dropdown" id="id_23">
+                <label class="form-label form-label-left form-label-auto" id="label_23" for="input_23"> Page Size
+                    <span class="form-required">
+        *
+      </span>
+                </label>
+                <div id="cid_23" class="form-input jf-required">
+                    <select class="form-dropdown" id="page_sizes" name="paper_size" data-component="dropdown">
+                        <option value="A0">A0</option>
+                        <option value="A1">A1</option>
+                        <option value="A2">A2</option>
+                        <option value="A3">A3</option>
+                        <option selected="selected" value="A4">A4</option>
+                        <option value="A5">A5</option>
+                        <option value="B4">B4</option>
+                        <option value="B5">B5</option>
+                    </select>
+                </div>
+            </li>
+
+            <li class="form-line" data-type="control_dropdown" id="landscape_or_portrait_div">
+                <label class="form-label form-label-left form-label-auto" id="label_23" for="input_23"> Orientation
+                    <span class="form-required">
+            *
+          </span>
+                </label>
+                <div id="cid_23" class="form-input jf-required">
+                    <select class="form-dropdown documents_required" id="orientation"
+                            name="landscape_or_portrait"
+                            data-component="dropdown">
+
+                        <option value="">Chose an option</option>
+
+                        <option value="landscape">Landscape</option>
+
+                        <option selected="selected" value="portrait">Portrait</option>
+                    </select>
+                </div>
+            </li>
+
+            <li class="form-line jf-required" data-type="control_textbox" id="pages_per_sheet_div">
+                <label class="form-label form-label-left form-label-auto" id="label_5" for="input_5">
+                    Pages per sheet with orientation
+                    <span class="form-required">
+            *
+          </span>
+
+                </label> <br> <br>
+                <div id="pages_per_sheet_ppt_landscape_div" class="form-input jf-required">
+                    <div class="form-multiple-column" data-columncount="3" data-component="radio"
+                         style="width:300px">
+            <span class="form-radio-item ">
+              <span class="dragger-item">
+              </span>
+                <input type="radio" class="form-radio documents_required" id="pages_per_sheet_pl1"
+                       name="pages_per_sheet"
+                       value="1_per_page_pl">
+                <label id="label_pages_per_sheet_pl1" for="pages_per_sheet_pl1"> 1 per page </label>
+
+            </span>
+                    </div>
+                    <div class="form-multiple-column" data-columncount="3" data-component="radio"
+                         style="width:300px">
+                            <span class="form-radio-item ">
+              <span class="dragger-item">
+              </span>
+                <input type="radio" class="form-radio documents_required" id="pages_per_sheet_pl2"
+                       name="pages_per_sheet"
+                       value="2_per_page_pl">
+                <label id="label_pages_per_sheet_pl2" for="pages_per_sheet_pl2"> 2 per page </label>
+
+            </span>
+                    </div>
+                    <div class="form-multiple-column" data-columncount="3" data-component="radio">
+                            <span class="form-radio-item ">
+              <span class="dragger-item">
+              </span>
+                <input type="radio" class="form-radio documents_required" id="pages_per_sheet_pl4"
+                       name="pages_per_sheet"
+                       value="4_per_page_pl">
+                <label id="label_pages_per_sheet_pl4" for="pages_per_sheet_pl4"> 4 per page </label>
+            </span>
+                    </div>
+                    <div class="form-multiple-column" data-columncount="3" data-component="radio">
+                            <span class="form-radio-item ">
+              <span class="dragger-item">
+              </span>
+                <input type="radio" class="form-radio documents_required" id="pages_per_sheet_pl6"
+                       name="pages_per_sheet"
+                       value="6_per_page_pl">
+                <label id="label_pages_per_sheet_pl6" for="pages_per_sheet_pl6"> 6 per page </label>
+            </span>
+                    </div>
+                    <div class="form-multiple-column" data-columncount="3" data-component="radio">
+                            <span class="form-radio-item ">
+              <span class="dragger-item">
+              </span>
+                <input type="radio" class="form-radio documents_required" id="pages_per_sheet_pl9"
+                       name="pages_per_sheet"
+                       value="9_per_page_pl">
+                <label id="label_pages_per_sheet_pl9" for="pages_per_sheet_pl9"> 9 per page </label>
+            </span>
+
+                    </div>
+                </div>
+
+                <div id="pages_per_sheet_ppt_portrait_div" class="form-input jf-required">
+                    <div class="form-multiple-column" data-columncount="3" data-component="radio"
+                         style="width:300px">
+                            <span class="form-radio-item ">
+              <span class="dragger-item">
+              </span>
+                            </span>
+                    </div>
+                </div>
+
+            </li>
+        </div>
+
+        <div id="preview_div">
+            <img id="output_image"/>
+        </div>
+        <br>
+        <div>
+            <center>
+                <button type="button" style="width: 30%" class="btn btn-primary btn-lg">Next</button>
+            </center>
+        </div>
+
+    </ul>
+</div>
+</body>
+<script>
+    function preview_image(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById("output_image");
+            output.src = reader.result;
+
+            height = output.clientHeight;
+            width = output.clientWidth;
+
+            console.log(height);
+            console.log(width);
+
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+<script>
+    $('#orientation').click(function () {
+        if ($('#orientation').val() === 'portrait') {
+            console.log("Portrait");
+            $('#preview_div').addClass("portrait");
+            $('#output_image').addClass("image_portrait");
+            $('#preview_div').removeClass("landscape");
+            $('#output_image').removeClass("image_landscape");
+
+        } else if ($('#orientation').val() === 'landscape') {
+            console.log("Landscape");
+            $('#preview_div').addClass("landscape");
+            $('#output_image').addClass("image_landscape");
+            $('#preview_div').removeClass("portrait");
+            $('#output_image').removeClass("image_portrait");
+        } else {
+            $('#preview_div').removeClass("portrait");
+            $('#preview_div').removeClass("landscape");
+
+        }
+    });
+
+    $('#page_sizes').click(function () {
+        if(''){
+
+        }
+    });
+</script>
+</html>
