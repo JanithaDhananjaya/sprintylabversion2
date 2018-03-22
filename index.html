@@ -119,6 +119,11 @@
             height: 300px;
         }
 
+        .A4_portrait {
+            width: 220px;
+            height: 300px;
+        }
+
         .A5_portrait {
             width: 420px;
             height: 500px;
@@ -142,6 +147,21 @@
         }
 
         .A4_landscape {
+            width: 270px;
+            height: 350px;
+        }
+
+        .A5_landscape {
+            width: 270px;
+            height: 350px;
+        }
+
+        .B4_landscape {
+            width: 270px;
+            height: 350px;
+        }
+
+        .B5_landscape {
             width: 270px;
             height: 350px;
         }
@@ -242,9 +262,6 @@
                 </label>
                 <div class="form-input jf-required">
                     <select class="form-dropdown" id="page_sizes" name="paper_size" data-component="dropdown">
-                        <!--<option value="A0">A0</option>-->
-                        <!--<option value="A1">A1</option>-->
-                        <!--<option value="A2">A2</option>-->
                         <option value="Letter">Letter</option>
                         <option value="A3">A3</option>
                         <option selected="selected" value="A4">A4</option>
@@ -431,75 +448,150 @@
         change_options();
     });
 
+    $('#page_sizes').change(function () {
+        change_options();
+    });
+
+
     function change_options() {
         if (fileUpload) {
             if ($('#orientation').val() === 'portrait' && $('input[name=page_handing]:checked').val() === 'fit') {
                 console.log("Portrait");
                 $('#preview_div').removeClass("overflow");
-                $('#preview_div').addClass("portrait");
-                $('#output_image').addClass("image_portrait");
                 $('#preview_div').removeClass("landscape");
                 $('#output_image').removeClass("image_landscape");
-                $('#output_image').removeClass("fit_landscape");
                 $('#output_image').removeClass("A3_portrait");
+                $('#output_image').removeClass("A5_portrait");
+                $('#output_image').removeClass("B4_portrait");
+                $('#output_image').removeClass("B5_portrait");
+                $('#output_image').removeClass("A3_landscape");
+                $('#output_image').removeClass("A5_landscape");
+                $('#output_image').removeClass("B4_landscape");
+                $('#output_image').removeClass("B5_landscape");
+                $('#preview_div').addClass("portrait");
+                $('#output_image').addClass("image_portrait");
+                $('#output_image').removeClass("fit_landscape");
+
 
             } else if ($('#orientation').val() === 'landscape' && $('input[name=page_handing]:checked').val() === 'fit') {
                 console.log("Landscape");
                 $('#preview_div').removeClass("overflow");
+                $('#preview_div').removeClass("portrait");
+                $('#output_image').removeClass("image_portrait");
+                $('#output_image').removeClass("A3_portrait");
+                $('#output_image').removeClass("A5_portrait");
+                $('#output_image').removeClass("B4_portrait");
+                $('#output_image').removeClass("B5_portrait");
+                $('#output_image').removeClass("A3_landscape");
+                $('#output_image').removeClass("A5_landscape");
+                $('#output_image').removeClass("B4_landscape");
+                $('#output_image').removeClass("B5_landscape");
+
                 $('#preview_div').addClass("landscape");
                 $('#output_image').addClass("image_landscape");
                 $('#output_image').addClass("fit_landscape");
-                $('#preview_div').removeClass("portrait");
-                $('#output_image').removeClass("image_portrait");
-                $('#output_image').removeClass("A3_portrait");
-                $('#output_image').removeClass("A3_landscape");
+
 
             } else if ($('#orientation').val() === 'portrait' && $('input[name=page_handing]:checked').val() === 'actualSize' && $('#page_sizes').val() === 'A3') {
+                $('#preview_div').removeClass("landscape");
+                $('#output_image').removeClass("image_portrait");
+                $('#output_image').removeClass("A5_portrait");
+                $('#output_image').removeClass("B4_portrait");
+                $('#output_image').removeClass("B5_portrait");
+                $('#output_image').removeClass("A3_landscape");
+                $('#output_image').removeClass("A5_landscape");
+                $('#output_image').removeClass("B4_landscape");
+                $('#output_image').removeClass("B5_landscape");
+
                 $('#preview_div').addClass("portrait");
                 $('#output_image').addClass("A3_portrait");
-                $('#preview_div').removeClass("landscape");
-                $('#output_image').removeClass("A3_landscape");
-                $('#output_image').removeClass("image_portrait");
+                $('#preview_div').addClass("overflow");
 
-//            } else {
-//                $('#preview_div').removeClass("portrait");
-//                $('#preview_div').removeClass("landscape");
-//            }
             } else if ($('#orientation').val() === 'landscape' && $('input[name=page_handing]:checked').val() === 'actualSize' && $('#page_sizes').val() === 'A3') {
+                $('#preview_div').removeClass("portrait");
+                $('#output_image').removeClass("image_portrait");
+                $('#output_image').removeClass("A3_portrait");
+                $('#output_image').removeClass("A5_portrait");
+                $('#output_image').removeClass("B4_portrait");
+                $('#output_image').removeClass("B5_portrait");
+                $('#output_image').removeClass("A5_landscape");
+                $('#output_image').removeClass("B4_landscape");
+                $('#output_image').removeClass("B5_landscape");
+
+
                 $('#preview_div').addClass("landscape");
                 $('#output_image').addClass("A3_landscape");
-                $('#preview_div').removeClass("portrait");
-                $('#output_image').removeClass("A3_portrait");
-                $('#output_image').removeClass("image_portrait");
+                $('#preview_div').addClass("overflow");
+
 
             } else if ($('#orientation').val() === 'portrait' && $('input[name=page_handing]:checked').val() === 'actualSize' && $('#page_sizes').val() === 'A5') {
+                $('#output_image').removeClass("image_portrait");
+                $('#output_image').removeClass("A3_portrait");
+                $('#output_image').removeClass("B4_portrait");
+                $('#output_image').removeClass("B5_portrait");
+                $('#output_image').removeClass("A3_landscape");
+                $('#output_image').removeClass("A5_landscape");
+                $('#output_image').removeClass("B4_landscape");
+                $('#output_image').removeClass("B5_landscape");
+                $('#preview_div').removeClass("landscape");
+
                 $('#preview_div').addClass("portrait");
                 $('#preview_div').addClass("overflow");
                 $('#output_image').addClass("A5_portrait");
-                $('#output_image').removeClass("A3_portrait");
-                $('#output_image').removeClass("A3_landscape");
-                $('#output_image').removeClass("image_portrait");
+
+
             } else if ($('#orientation').val() === 'portrait' && $('input[name=page_handing]:checked').val() === 'actualSize' && $('#page_sizes').val() === 'B4') {
+                $('#output_image').removeClass("image_portrait");
+                $('#output_image').removeClass("image_landscape");
+                $('#output_image').removeClass("A3_portrait");
+                $('#output_image').removeClass("A4_portrait");
+                $('#output_image').removeClass("A5_portrait");
+                $('#output_image').removeClass("B5_portrait");
+                $('#output_image').removeClass("A3_landscape");
+                $('#output_image').removeClass("A5_landscape");
+                $('#output_image').removeClass("B4_landscape");
+                $('#output_image').removeClass("B5_landscape");
+                $('#preview_div').removeClass("landscape");
+
+
                 $('#preview_div').addClass("portrait");
                 $('#preview_div').addClass("overflow");
                 $('#output_image').addClass("B4_portrait");
-                $('#output_image').removeClass("A3_portrait");
-                $('#output_image').removeClass("A3_landscape");
-                $('#output_image').removeClass("image_portrait");
+
             } else if ($('#orientation').val() === 'portrait' && $('input[name=page_handing]:checked').val() === 'actualSize' && $('#page_sizes').val() === 'B5') {
+                $('#output_image').removeClass("image_portrait");
+                $('#output_image').removeClass("image_landscape");
+                $('#output_image').removeClass("A3_portrait");
+                $('#output_image').removeClass("A4_portrait");
+                $('#output_image').removeClass("A5_portrait");
+                $('#output_image').removeClass("B4_portrait");
+                $('#output_image').removeClass("A3_landscape");
+                $('#output_image').removeClass("A5_landscape");
+                $('#output_image').removeClass("B4_landscape");
+                $('#output_image').removeClass("B5_landscape");
+                $('#preview_div').removeClass("landscape");
+
+
                 $('#preview_div').addClass("portrait");
                 $('#preview_div').addClass("overflow");
                 $('#output_image').addClass("B5_portrait");
-                $('#output_image').removeClass("A3_portrait");
-                $('#output_image').removeClass("A3_landscape");
-                $('#output_image').removeClass("image_portrait");
+
+
             } else if ($('#orientation').val() === 'landscape' && $('input[name=page_handing]:checked').val() === 'actualSize' && $('#page_sizes').val() === 'A4') {
+                $('#output_image').removeClass("image_portrait");
+                $('#output_image').removeClass("image_landscape");
+                $('#output_image').removeClass("A3_portrait");
+                $('#output_image').removeClass("A4_portrait");
+                $('#output_image').removeClass("A5_portrait");
+                $('#output_image').removeClass("B5_portrait");
+                $('#output_image').removeClass("A3_landscape");
+                $('#output_image').removeClass("A5_landscape");
+                $('#output_image').removeClass("B4_landscape");
+                $('#output_image').removeClass("B5_landscape");
+
                 $('#preview_div').addClass("landscape");
                 $('#preview_div').addClass("overflow");
                 $('#output_image').addClass("A4_landscape");
-//                $('#output_image').removeClass("A3_portrait");
-//                $('#output_image').removeClass("A3_landscape");
-//                $('#output_image').removeClass("image_portrait");
             }
         }
     }
