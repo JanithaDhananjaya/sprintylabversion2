@@ -61,23 +61,29 @@
 
     </style>
 
-    <style>
-        /*custom stylies*/
+    <style id="fit_sizes">
+        /*fit sizes stylies*/
 
+        .center_div {
+            margin: auto;
+        }
+
+        /*portrait div*/
         .portrait {
             border: 2px solid black;
             width: 280px;
             height: 400px;
-            margin-left: 20%;
             padding: 0;
         }
 
+        /*landscape div*/
         .landscape {
             border: 2px solid black;
             width: 400px;
             height: 250px;
-            margin-left: 5%;
         }
+
+        /*Fit sizes*/
 
         .image_portrait {
             position: relative;
@@ -91,8 +97,53 @@
             height: 250px;
         }
 
-        A4_portrait {
+        .fit_landscape {
             margin-left: 25%;
+        }
+
+        .greyScale {
+            filter: grayscale(100%);
+        }
+
+    </style>
+
+    <style id="actual_sizes">
+
+        .overflow {
+            overflow: hidden;
+        }
+
+        /*Actual Sizes*/
+        .A3_portrait {
+            width: 220px;
+            height: 300px;
+        }
+
+        .A5_portrait {
+            width: 420px;
+            height: 500px;
+
+        }
+
+        .B4_portrait {
+            width: 240px;
+            height: 320px;
+        }
+
+        .B5_portrait {
+            width: 340px;
+            height: 480px;
+        }
+
+        .A3_landscape {
+            width: 190px;
+            height: 250px;
+            margin: 0;
+        }
+
+        .A4_landscape {
+            width: 270px;
+            height: 350px;
         }
 
     </style>
@@ -105,6 +156,7 @@
 <div id="initial" class="form-all">
     <ul class="form-section page-section">
         <li class="form-input-wide" data-type="control_head">
+
             <div class="form-header-group ">
                 <div class="header-text httal htvam">
                     <center>
@@ -122,21 +174,21 @@
         <div class="main">
 
             <li class="form-line" data-type="control_fileupload" id="id_22">
-                <label class="form-label form-label-left form-label-auto" id="label_22" for="input_22"> Upload the
+                <label class="form-label form-label-left form-label-auto" id="uploadfile"> Upload the
                     file
                     <span class="form-required">
                         *
                         </span>
                 </label>
-                <div id="cid_22" class="form-input jf-required">
+                <div class="form-input jf-required">
                     <input type="file" id="uploaded_file" name="uploaded_file[]" required="" class="form-upload"
                            accept=".pdf, .ppt, .pptx, .jpg, .jpeg, .png" data-file-maxsize="25000000" id="fileChooser"
                            onchange="preview_image(event)"
                            data-file-minsize="0" data-file-limit="0" data-component="fileupload" multiple>
                 </div>
             </li>
-            <li class="form-line jf-required" data-type="control_fullname" id="id_16">
-                <label class="form-label form-label-left form-label-auto" id="label_16" for="first_16">
+            <li class="form-line jf-required" data-type="control_fullname">
+                <label class="form-label form-label-left form-label-auto">
                     Number of copies
                     <span class="form-required">
                         *
@@ -145,7 +197,7 @@
                 <div id="cid_16" class="form-input jf-required">
                     <div data-wrapper-react="true">
           <span class="form-sub-label-container" style="vertical-align:top;">
-            <input type="number" id="" name="no_of_copies" placeholder="Number of copies..."
+            <input type="number" name="no_of_copies" placeholder="Number of copies..."
                    class="form-control-plaintext"
                    size="10" value="1" required="">
           </span>
@@ -153,27 +205,27 @@
                 </div>
             </li>
 
-            <li class="form-line jf-required" data-type="control_radio" id="id_19">
-                <label class="form-label form-label-left form-label-auto" id="label_19" for="input_19">
+            <li class="form-line jf-required" data-type="control_radio">
+                <label class="form-label form-label-left form-label-auto">
                     Black & White /Colour
                     <span class="form-required">
                         *
                         </span>
                 </label>
-                <div id="cid_19" class="form-input jf-required">
+                <div class="form-input jf-required">
                     <div class="form-multiple-column" data-columncount="3" data-component="radio">
         <span class="form-radio-item">
           <span class="dragger-item">
           </span>
-            <input type="radio" class="form-radio" id="input_19_0" name="gray_or_color" value="gray_scale" required=""
-                   checked="">
-          <label id="label_input_19_0" for="input_19_0"> Black & White </label>
+            <input type="radio" id="greyScale" class="form-radio" name="gray_or_color" value="gray_scale" required="">
+          <label> Black & White </label>
         </span>
                         <span class="form-radio-item">
           <span class="dragger-item">
           </span>
-          <input type="radio" class="form-radio" id="input_19_1" name="gray_or_color" value="color" required="">
-          <label id="label_input_19_1" for="input_19_1"> Colour </label>
+          <input type="radio" id="colored" class="form-radio" checked="" name="gray_or_color" value="color"
+                 required="">
+          <label> Colour </label>
         </span>
                     </div>
                 </div>
@@ -182,17 +234,18 @@
 
 
         <div id="documents" class="tabcontent main">
-            <li class="form-line" data-type="control_dropdown" id="id_23">
-                <label class="form-label form-label-left form-label-auto" id="label_23" for="input_23"> Page Size
+            <li class="form-line" data-type="control_dropdown">
+                <label class="form-label form-label-left form-label-auto"> Page Size
                     <span class="form-required">
         *
       </span>
                 </label>
-                <div id="cid_23" class="form-input jf-required">
+                <div class="form-input jf-required">
                     <select class="form-dropdown" id="page_sizes" name="paper_size" data-component="dropdown">
-                        <option value="A0">A0</option>
-                        <option value="A1">A1</option>
-                        <option value="A2">A2</option>
+                        <!--<option value="A0">A0</option>-->
+                        <!--<option value="A1">A1</option>-->
+                        <!--<option value="A2">A2</option>-->
+                        <option value="Letter">Letter</option>
                         <option value="A3">A3</option>
                         <option selected="selected" value="A4">A4</option>
                         <option value="A5">A5</option>
@@ -203,12 +256,12 @@
             </li>
 
             <li class="form-line" data-type="control_dropdown" id="landscape_or_portrait_div">
-                <label class="form-label form-label-left form-label-auto" id="label_23" for="input_23"> Orientation
+                <label class="form-label form-label-left form-label-auto" id="label_23"> Orientation
                     <span class="form-required">
             *
           </span>
                 </label>
-                <div id="cid_23" class="form-input jf-required">
+                <div class="form-input jf-required">
                     <select class="form-dropdown documents_required" id="orientation"
                             name="landscape_or_portrait"
                             data-component="dropdown">
@@ -223,7 +276,7 @@
             </li>
 
             <li class="form-line jf-required" data-type="control_textbox" id="pages_per_sheet_div">
-                <label class="form-label form-label-left form-label-auto" id="label_5" for="input_5">
+                <label class="form-label form-label-left form-label-auto">
                     Pages per sheet with orientation
                     <span class="form-required">
             *
@@ -301,6 +354,34 @@
             </li>
         </div>
 
+
+        <li class="form-line jf-required" data-type="control_radio">
+            <label class="form-label form-label-left form-label-auto">
+                Page Handling
+                <span class="form-required">
+                        *
+                        </span>
+            </label>
+            <div class="form-input jf-required">
+                <div class="form-multiple-column" data-columncount="3" data-component="radio">
+        <span class="form-radio-item">
+          <span class="dragger-item">
+          </span>
+            <input type="radio" class="form-radio" id="fit" checked="" name="page_handing" value="fit" required="">
+          <label>Fit </label>
+        </span>
+                    <span class="form-radio-item">
+          <span class="dragger-item">
+          </span>
+          <input type="radio" id="actualSize" class="form-radio" name="page_handing" value="actualSize"
+                 required="">
+          <label> Actual Size </label>
+        </span>
+                </div>
+            </div>
+        </li>
+
+
         <div id="preview_div">
             <img id="output_image"/>
         </div>
@@ -315,48 +396,121 @@
 </div>
 </body>
 <script>
+
+    var fileUpload = false;
+
+    var reader = new FileReader();
+
     function preview_image(event) {
-        var reader = new FileReader();
+
         reader.onload = function () {
             var output = document.getElementById("output_image");
             output.src = reader.result;
 
-            height = output.clientHeight;
-            width = output.clientWidth;
+            var height = output.clientHeight;
+            var width = output.clientWidth;
 
             console.log(height);
             console.log(width);
 
         }
+        fileUpload = true;
         reader.readAsDataURL(event.target.files[0]);
+
     }
+
+    $('#uploaded_file').click(function () {
+        $('#preview_div').addClass("portrait");
+        $('#output_image').addClass("image_portrait");
+        $('#preview_div').addClass("center_div");
+    });
+
 </script>
 <script>
-    $('#orientation').click(function () {
-        if ($('#orientation').val() === 'portrait') {
-            console.log("Portrait");
-            $('#preview_div').addClass("portrait");
-            $('#output_image').addClass("image_portrait");
-            $('#preview_div').removeClass("landscape");
-            $('#output_image').removeClass("image_landscape");
-
-        } else if ($('#orientation').val() === 'landscape') {
-            console.log("Landscape");
-            $('#preview_div').addClass("landscape");
-            $('#output_image').addClass("image_landscape");
-            $('#preview_div').removeClass("portrait");
-            $('#output_image').removeClass("image_portrait");
-        } else {
-            $('#preview_div').removeClass("portrait");
-            $('#preview_div').removeClass("landscape");
-
-        }
+    $('#orientation').change(function () {
+        change_options();
     });
 
-    $('#page_sizes').click(function () {
-        if(''){
+    function change_options() {
+        if (fileUpload) {
+            if ($('#orientation').val() === 'portrait' && $('input[name=page_handing]:checked').val() === 'fit') {
+                console.log("Portrait");
+                $('#preview_div').removeClass("overflow");
+                $('#preview_div').addClass("portrait");
+                $('#output_image').addClass("image_portrait");
+                $('#preview_div').removeClass("landscape");
+                $('#output_image').removeClass("image_landscape");
+                $('#output_image').removeClass("fit_landscape");
+                $('#output_image').removeClass("A3_portrait");
 
+            } else if ($('#orientation').val() === 'landscape' && $('input[name=page_handing]:checked').val() === 'fit') {
+                console.log("Landscape");
+                $('#preview_div').removeClass("overflow");
+                $('#preview_div').addClass("landscape");
+                $('#output_image').addClass("image_landscape");
+                $('#output_image').addClass("fit_landscape");
+                $('#preview_div').removeClass("portrait");
+                $('#output_image').removeClass("image_portrait");
+                $('#output_image').removeClass("A3_portrait");
+                $('#output_image').removeClass("A3_landscape");
+
+            } else if ($('#orientation').val() === 'portrait' && $('input[name=page_handing]:checked').val() === 'actualSize' && $('#page_sizes').val() === 'A3') {
+                $('#preview_div').addClass("portrait");
+                $('#output_image').addClass("A3_portrait");
+                $('#preview_div').removeClass("landscape");
+                $('#output_image').removeClass("A3_landscape");
+                $('#output_image').removeClass("image_portrait");
+
+//            } else {
+//                $('#preview_div').removeClass("portrait");
+//                $('#preview_div').removeClass("landscape");
+//            }
+            } else if ($('#orientation').val() === 'landscape' && $('input[name=page_handing]:checked').val() === 'actualSize' && $('#page_sizes').val() === 'A3') {
+                $('#preview_div').addClass("landscape");
+                $('#output_image').addClass("A3_landscape");
+                $('#preview_div').removeClass("portrait");
+                $('#output_image').removeClass("A3_portrait");
+                $('#output_image').removeClass("image_portrait");
+
+            } else if ($('#orientation').val() === 'portrait' && $('input[name=page_handing]:checked').val() === 'actualSize' && $('#page_sizes').val() === 'A5') {
+                $('#preview_div').addClass("portrait");
+                $('#preview_div').addClass("overflow");
+                $('#output_image').addClass("A5_portrait");
+                $('#output_image').removeClass("A3_portrait");
+                $('#output_image').removeClass("A3_landscape");
+                $('#output_image').removeClass("image_portrait");
+            } else if ($('#orientation').val() === 'portrait' && $('input[name=page_handing]:checked').val() === 'actualSize' && $('#page_sizes').val() === 'B4') {
+                $('#preview_div').addClass("portrait");
+                $('#preview_div').addClass("overflow");
+                $('#output_image').addClass("B4_portrait");
+                $('#output_image').removeClass("A3_portrait");
+                $('#output_image').removeClass("A3_landscape");
+                $('#output_image').removeClass("image_portrait");
+            } else if ($('#orientation').val() === 'portrait' && $('input[name=page_handing]:checked').val() === 'actualSize' && $('#page_sizes').val() === 'B5') {
+                $('#preview_div').addClass("portrait");
+                $('#preview_div').addClass("overflow");
+                $('#output_image').addClass("B5_portrait");
+                $('#output_image').removeClass("A3_portrait");
+                $('#output_image').removeClass("A3_landscape");
+                $('#output_image').removeClass("image_portrait");
+            } else if ($('#orientation').val() === 'landscape' && $('input[name=page_handing]:checked').val() === 'actualSize' && $('#page_sizes').val() === 'A4') {
+                $('#preview_div').addClass("landscape");
+                $('#preview_div').addClass("overflow");
+                $('#output_image').addClass("A4_landscape");
+//                $('#output_image').removeClass("A3_portrait");
+//                $('#output_image').removeClass("A3_landscape");
+//                $('#output_image').removeClass("image_portrait");
+            }
         }
+    }
+
+    $('#greyScale').click(function () {
+        $('#output_image').addClass("greyScale");
     });
+
+    $('#colored').click(function () {
+        $('#output_image').removeClass("greyScale");
+    });
+
 </script>
 </html>
