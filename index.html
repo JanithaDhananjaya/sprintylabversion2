@@ -633,9 +633,9 @@
         }else if ($('#orientation').val() === 'landscape' && $('input[name=page_handing]:checked').val() === 'actualSize' && $('#page_sizes').val() === 'A3') {
             $('#preview_div').addClass("landscape");
             $('#output_image').addClass("A3_landscape");
+            $('#preview_div').addClass("overflow");
 
             $('#preview_div').removeClass("portrait");
-            $('#preview_div').removeClass("overflow");
 
             $('#output_image').removeClass("image_portrait");
             $('#output_image').removeClass("image_landscape");
